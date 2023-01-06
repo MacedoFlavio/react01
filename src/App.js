@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Header from './Header';
+import Home from './Home';
+import Produtos from './Produtos';
+import Contato from './Contato';
 
-function App() {
+const App = () => {
+  let Componente;
+  const { pathname } = window.location;
+
+  if (pathname === '/produtos') {
+    Componente = Produtos;
+  } else if (pathname === '/contato') {
+    Componente = Contato;
+  } else {
+    Componente = Home;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <Componente />
     </div>
   );
-}
+};
 
 export default App;
